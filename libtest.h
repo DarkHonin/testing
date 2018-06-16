@@ -6,7 +6,7 @@
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/16 11:18:11 by wgourley          #+#    #+#             */
-/*   Updated: 2018/06/16 13:28:14 by wgourley         ###   ########.fr       */
+/*   Updated: 2018/06/16 13:45:15 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define TESTING_H
 # define MK_T_INT(v) make_test(&v, sizeof(int))
+# define MK_T_PNTR(v, size) make_test(&v, size)
 
 #include <string.h>
 #include <libft.h>
