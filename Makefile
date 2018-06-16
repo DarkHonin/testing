@@ -1,5 +1,12 @@
-OBJ_OUT:= comparason.o
+OBJ_OUT:=comparason.o test_obj.o
 NAME:=libtest.a
+LIBFT=libft
+
+all: $(NAME)
+
+dep_add: 
+
+re: fclean $(NAME)
 
 $(NAME): $(OBJ_OUT)
 	@ar rc $(NAME) $(OBJ_OUT)
@@ -7,7 +14,7 @@ $(NAME): $(OBJ_OUT)
 	@echo "LIB MADE"
 
 $(OBJ_OUT):
-	@gcc -c $*.c -o $(OBJ_OUT)
+	gcc -c $*.c -I$(LIBFT) -L$(LIBFT) -lft
 	@echo "made --> $@"
 
 clean:

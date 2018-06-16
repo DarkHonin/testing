@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libtest.h                                          :+:      :+:    :+:   */
+/*   test_obj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgourley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/16 11:18:11 by wgourley          #+#    #+#             */
-/*   Updated: 2018/06/16 13:28:14 by wgourley         ###   ########.fr       */
+/*   Created: 2018/06/16 12:00:43 by wgourley          #+#    #+#             */
+/*   Updated: 2018/06/16 13:27:42 by wgourley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTING_H
+#include "libtest.h"
 
-# define TESTING_H
-# define MK_T_INT(v) make_test(&v, sizeof(int))
-
-#include <string.h>
-#include <libft.h>
-
-typedef	struct s_test_obj
+t_test *make_test(void *data, size_t len)
 {
-	void 	*data;
-	size_t	len;
-} t_test;
+    t_test *ret;
+    
+    ret = (t_test *)ft_memalloc(sizeof(t_test));
+    ret->data = data;
+    ret->len = len;
+    return (ret);
+}
 
-t_test *make_test(void *data, size_t len);
-void    del_test(t_test *a);
-int	ct_int(t_test *a, t_test *b);
-
-
-#endif
+void    del_test(t_test *a)
+{
+    free(a->data);
+    free(a);
+}
