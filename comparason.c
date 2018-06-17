@@ -12,7 +12,7 @@
 
 #include "libtest.h"
 
-int	ct_int(t_test *a, t_test *b)
+int	cmp_bytes(t_test *a, t_test *b)
 {
-	return (ft_memcmp(a->data, b->data, a->len) == 0);
+	return (ft_memcmp(a->data, b->data, a->len));
 }

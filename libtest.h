@@ -14,10 +14,11 @@
 
 # define TESTING_H
 # define MK_T_INT(v) make_test(&v, sizeof(int))
-# define MK_T_PNTR(v, size) make_test(&v, size)
+# define MK_T_PNTR(v, size) make_test(v, size)
 
 #include <string.h>
 #include <libft.h>
+#include <stdlib.h>
 
 typedef	struct s_test_obj
 {
@@ -27,7 +28,9 @@ typedef	struct s_test_obj
 
 t_test *make_test(void *data, size_t len);
 void    del_test(t_test *a);
-int	ct_int(t_test *a, t_test *b);
+int		cmp_bytes(t_test *a, t_test *b);
+void	test(char *message, t_test *a, t_test *b);
+void	test_n(char *message, t_test *a, t_test *b);
 
 
 #endif
