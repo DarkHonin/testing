@@ -13,24 +13,32 @@
 #ifndef TESTING_H
 
 # define TESTING_H
-# define MK_T_INT(v) make_test(&v, sizeof(int))
-# define MK_T_PNTR(v, size) make_test(v, size)
 
 #include <string.h>
 #include <libft.h>
 #include <stdlib.h>
 
-typedef	struct s_test_obj
+# define T_INT(in) mk_t_obj(sizeof(int), &in)
+# define T_STR(in) mk_t_obj(sizeof(char) * ft_strlen(in), in)
+
+typedef	struct s_tobj
 {
 	void 	*data;
 	size_t	len;
-} t_test;
+} t_obj;
 
-t_test *make_test(void *data, size_t len);
-void    del_test(t_test *a);
-int		cmp_bytes(t_test *a, t_test *b);
-void	test(char *message, t_test *a, t_test *b);
-void	test_n(char *message, t_test *a, t_test *b);
+typedef struct s_check
+{
+	t_obj	*val_a;
+	t_obj	*val_b;
+	size_t	test_len;
+	char	*msg_fail;
+} t_check;
 
+t_obj	*mk_t_obj(size_t e, void *data);
+t_check *mk_check(t_obj *a, t_obj *b, char *failmsg);
+void	del_t_obj(t_obj **a);
+int		do_test(t_obj *a, t_obj *b, size_t len);
+int 	do_check(t_check *check);
 
 #endif

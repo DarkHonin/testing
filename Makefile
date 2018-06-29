@@ -1,15 +1,12 @@
-OBJ_OUT=comparason.o test_obj.o output.o
+OBJ_OUT=t_obj.o frame.o
 NAME:=libtest.a
-LIBFT=../libft
+LIBFT=libft
 
 FLAGS:=-I$(LIBFT) -L$(LIBFT) -lft -Wextra -Wall -Werror
 
 all: $(NAME)
 
-re: fclean $(NAME)
-
-make_test:
-	gcc .test.c $(LIBFT)/libft.a $(NAME) $(FLAGS)
+re: fclean all
 
 $(NAME): $(OBJ_OUT)
 	@ar rc $(NAME) $(OBJ_OUT)
